@@ -1,0 +1,1 @@
+SELECT * FROM movies JOIN links ON movies."movieId"=links."movieId";
