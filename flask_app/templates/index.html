@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-  </head>
-  <body>
+{% extends "_base.html" %}
+
+{% block content %}
+
     <!-- What we want users to see goes in the body  [CTRL+Shift+7]-->
     <h1>Movie Recommendations!</h1>
-
     <!--#Optional arguments: <a href="" style= class= id= </a>  -->
     <a href="/recommendation"> Don't know what to watch? Click here!</a>
     <br />
@@ -16,8 +12,37 @@
     <br />
     <br />
 
+    <form action="/recommendation" method="get">
+
+      <p>Provide Ratings for some Movies</p>
+
+      <input type="text" name="movie1" value="{{choices[0]}}">
+      <input type="text" name="rating1" placeholder="0.0 - 5.0">
+      <br>
+      <input type="text" name="movie2" value="{{choices[1]}}">
+      <input type="text" name="rating2" placeholder="0.0 - 5.0">
+      <br>
+      <input type="text" name="movie3" value="{{choices[2]}}">
+      <input type="text" name="rating3" placeholder="0.0 - 5.0">
+
+      <br>
+      <br>
+
+      <!-- <p>Please Select your Preferred Genre.</p> -->
+
+      <!-- <select name="genre">
+      <option value="Drama">Drama</option>
+      <option value="Action">Action</option>
+      <option value="Horror">Horror</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      </select> -->
+
+      <input type="submit">
+
+    </form>
+
     <a href="https://github.com/ccuevasd/movie_recommender">
       Take a loot at our repository
     </a>
-  </body>
-</html>
+
+{% endblock %}

@@ -8,9 +8,13 @@
 
     <p>Here is what you should watch:</p>
     <ul>
-      <li> {{ movies[0] }} </li>
+      <!-- <li> {{ movies[0] }} </li>
       <li> {{ movies[1] }} </li>
-      <li> {{ movies[2] }} </li>
+      <li> {{ movies[2] }} </li> -->
+      {% for m in movies %}
+      <li> {{ m }} </li>
+      {% endfor %}
+
     </ul>
   </body>
 </html>
