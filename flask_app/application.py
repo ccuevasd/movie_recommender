@@ -14,6 +14,7 @@ def index():
 @app.route('/recommendation')
 def recommend():
     user_input = dict(request.args)
+    #CONVERT FLASK DICTIONARY HERE!
     movies = get_recommendations(user_input)
     #random_recommend(MOVIES, 3)
     return render_template('recommendation.html', movies=movies)

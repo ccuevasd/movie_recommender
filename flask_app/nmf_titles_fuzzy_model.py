@@ -7,7 +7,7 @@ from sklearn.decomposition import NMF
 from fuzzywuzzy import process
 
 
-R = pd.read_csv('/Users/Simon/Documents/Data_Science/Spiced_Academy/Course_Work/Week__10/Project/data/UserRatingTitles-withoutYear.csv', index_col=0)
+R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
 
 R.fillna(2.5, inplace=True)
 
