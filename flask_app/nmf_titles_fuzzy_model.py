@@ -18,6 +18,14 @@ Q = pd.DataFrame(model.components_, columns=R.columns)
 
 P = pd.DataFrame(model.transform(R), index=R.index)
 
+
+def convert_flask_dict(flask_dict):
+    new_keys = list(flask_dict.values())[::2]
+    new_vals = list(flask_dict.values())[1::2]
+
+    return dict(zip(new_keys, new_vals))
+
+
 def get_recommendations(user_input):
     flask_user_input = user_input
     # flask_user_input = {
@@ -26,7 +34,8 @@ def get_recommendations(user_input):
     #  'Grupmyer Old Men': '4'
     #  }
 
-    new_user_vector = pd.DataFrame([np.nan]*len(R.columns), index=R.columns).transpose()
+    new_user_vector = pd.DataFrame(
+        [np.nan]*len(R.columns), index=R.columns).transpose()
 
     # Loop to check whether user_id is there
     for key, value in flask_user_input.items():
@@ -47,7 +56,8 @@ def get_recommendations(user_input):
     hidden_profile = model.transform(new_user_vector_filled)
 
     # Calculate the predictions using np.dot
-    rating_prediction = pd.DataFrame(np.dot(hidden_profile, model.components_), columns= new_user_vector.columns)
+    rating_prediction = pd.DataFrame(
+        np.dot(hidden_profile, model.components_), columns=new_user_vector.columns)
 
     # Create a boolean mask to filter out the positions where the data was originally NaN
     bool_mask = np.isnan(new_user_vector.values[0])
@@ -59,6 +69,7 @@ def get_recommendations(user_input):
     movies_not_seen_df = rating_prediction[movies_not_seen].T
 
     # Get recommendations
-    films_recommended = movies_not_seen_df.sort_values(by=0, ascending=False).index[:3]
+    films_recommended = movies_not_seen_df.sort_values(
+        by=0, ascending=False).index[:3]
     return films_recommended
-#print(get_recommendations(user_input))
+# print(get_recommendations(user_input))
