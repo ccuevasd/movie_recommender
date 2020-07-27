@@ -5,10 +5,9 @@ import pandas as pd
 import numpy as np
 from sklearn.decomposition import NMF
 from fuzzywuzzy import process
-import pickle
 
-R = pd.read_csv(
-    '/Users/Simon/Documents/Data_Science/Spiced_Academy/Course_Work/Week__10/Project/data/UserRatingTitles-withoutYear.csv', index_col=0)
+
+R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
 
 R.fillna(2.5, inplace=True)
 
@@ -19,8 +18,12 @@ Q = pd.DataFrame(model.components_, columns=R.columns)
 
 P = pd.DataFrame(model.transform(R), index=R.index)
 
-pickle.dump(model, open('nmf_binary', 'wb'))
-nmf_model = pickle.load(open('nmf_binary', 'rb'))
+
+def convert_flask_dict(flask_dict):
+    new_keys = list(flask_dict.values())[::2]
+    new_vals = list(flask_dict.values())[1::2]
+
+    return dict(zip(new_keys, new_vals))
 
 
 def get_recommendations(user_input):
@@ -65,8 +68,10 @@ def get_recommendations(user_input):
     # Find recommendations for unseen movies
     movies_not_seen_df = rating_prediction[movies_not_seen].T
 
-    # Get recommendations
-    films_recommended = movies_not_seen_df.sort_values(
-        by=0, ascending=False).index[:3]
-    return films_recommended
+
+q
+# Get recommendations
+films_recommended = movies_not_seen_df.sort_values(
+    by=0, ascending=False).index[:3]
+return films_recommended
 # print(get_recommendations(user_input))

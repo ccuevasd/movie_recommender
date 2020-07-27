@@ -1,8 +1,7 @@
 import random
 import pandas as pd
 
-df = pd.read_csv(
-    '/Users/Simon/Documents/Data_Science/Spiced_Academy/Course_Work/Week__10/Project/data/movies.csv')
+df = pd.read_csv('../data/movies.csv', index_col=0)
 
 MOVIES = df['title'].to_list()
 
