@@ -21,4 +21,4 @@ Q = pd.DataFrame(model.components_, columns=R.columns)
 
 P = pd.DataFrame(model.transform(R), index=R.index)
 
-pickle.dump(nmf, open('nmf_binary', 'wb'))
+pickle.dump(model, open('nmf_binary', 'wb'))
