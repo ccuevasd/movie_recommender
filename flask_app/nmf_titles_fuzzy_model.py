@@ -7,16 +7,7 @@ from sklearn.decomposition import NMF
 from fuzzywuzzy import process
 
 
-R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
-
-R.fillna(2.5, inplace=True)
-
-model = NMF(19)
-model.fit(R)
-
-Q = pd.DataFrame(model.components_, columns=R.columns)
-
-P = pd.DataFrame(model.transform(R), index=R.index)
+nmf = pickle.load(open('nmf_binary', 'rb'))
 
 
 def convert_flask_dict(flask_dict):
