@@ -68,8 +68,10 @@ def get_recommendations(user_input):
     # Find recommendations for unseen movies
     movies_not_seen_df = rating_prediction[movies_not_seen].T
 
-    # Get recommendations
-    films_recommended = movies_not_seen_df.sort_values(
-        by=0, ascending=False).index[:3]
-    return films_recommended
+
+q
+# Get recommendations
+films_recommended = movies_not_seen_df.sort_values(
+    by=0, ascending=False).index[:3]
+return films_recommended
 # print(get_recommendations(user_input))
