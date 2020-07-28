@@ -9,11 +9,11 @@ from fuzzywuzzy import process
 import pickle
 
 
-nmf = pickle.load(open('nmf_binary', 'rb'))
-
 R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
 imputer = KNNImputer(n_neighbors=5)
 R = pd.DataFrame(imputer.fit_transform(R), columns=R.columns, index=R.index)
+
+nmf = pickle.load(open('nmf_binary', 'rb'))
 
 
 def convert_flask_dict(flask_dict):
