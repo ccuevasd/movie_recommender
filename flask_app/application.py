@@ -19,6 +19,7 @@ def recommend():
     # CONVERT FLASK DICTIONARY HERE!
     user_input = convert_flask_dict(user_input)
     movies = get_recommendations(user_input)
+    # put in cosine_recommendations as well
     #random_recommend(MOVIES, 3)
     return render_template('recommendation.html', movies=movies)
 
