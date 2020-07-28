@@ -4,19 +4,16 @@
 import pandas as pd
 import numpy as np
 from sklearn.decomposition import NMF
+from sklearn.impute import KNNImputer
 from fuzzywuzzy import process
+import pickle
 
 
 R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
+imputer = KNNImputer(n_neighbors=5)
+R = pd.DataFrame(imputer.fit_transform(R), columns=R.columns, index=R.index)
 
-R.fillna(2.5, inplace=True)
-
-model = NMF(19)
-model.fit(R)
-
-Q = pd.DataFrame(model.components_, columns=R.columns)
-
-P = pd.DataFrame(model.transform(R), index=R.index)
+model = pickle.load(open('nmf_binary', 'rb'))
 
 
 def convert_flask_dict(flask_dict):
@@ -68,10 +65,8 @@ def get_recommendations(user_input):
     # Find recommendations for unseen movies
     movies_not_seen_df = rating_prediction[movies_not_seen].T
 
-
-q
-# Get recommendations
-films_recommended = movies_not_seen_df.sort_values(
-    by=0, ascending=False).index[:3]
-return films_recommended
+    # Get recommendations
+    films_recommended = movies_not_seen_df.sort_values(
+        by=0, ascending=False).index[:3]
+    return films_recommended
 # print(get_recommendations(user_input))
