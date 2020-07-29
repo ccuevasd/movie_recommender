@@ -7,6 +7,8 @@ import pandas as pd
 import seaborn as sns
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.impute import KNNImputer
+from fuzzywuzzy import process
+
 
 # Data
 R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
@@ -32,7 +34,22 @@ def get_recommendations_cosine(user_input):
     flask_user_input = user_input
 
     # Introduce New User
-    new_user_df = pd.DataFrame(flask_user_input, index=['NewUser'])
+    #new_user_df = pd.DataFrame(flask_user_input, index=['NewUser'])
+    new_user_df = pd.DataFrame(
+        [np.nan]*len(R.columns), index=R.columns)
+    new_user_df.columns = ['NewUser']
+    new_user_df = new_user_df.transpose()
+
+    # Loop to check whether user_id is there
+    for key, value in flask_user_input.items():
+        if key in new_user_df.columns:
+            new_user_df.loc[:, key] = float(value)
+        else:
+            closest_match = process.extract(key, R.columns)[0][0]
+            new_user_df.loc[:, closest_match] = float(value)
+            if len(process.extract(key, R.columns)[0][0]) < 0.5*len(key):
+                closest_match = process.extract(key, R.columns)[1][0]
+                new_user_df.loc[:, closest_match] = float(value)
 
     # Append newuser to the user-item matrix
     R_new_user = R.append(new_user_df)
