@@ -62,7 +62,7 @@ def get_recommendations_cosine(user_input):
 
     # Get recommendations
     #rating_predictions[~movie_filter].sort_values(by=0, ascending=False)
-    films_recommended_cosine = rating_predictions[~movie_filter].sort_values(
+    films_recommended = rating_predictions[~movie_filter].sort_values(
         by=0, ascending=False).index[:3]
 
-    return films_recommended_cosine
+    return films_recommended
