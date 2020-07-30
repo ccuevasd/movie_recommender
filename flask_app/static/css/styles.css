@@ -1,3 +1,74 @@
+#logo {
+  height: 50px;
+}
+
+.main-splash {
+  background-color: #62003C;
+  height: 100vh;
+  color: #FFE4F8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#highlight {
+  color: #00C9B6;
+}
+
+.quote {
+  background-color: #FFE4F8;
+  height: 100vh;
+  color: #62003C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.query-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.merp {
+  margin-bottom: 20px;
+}
+
+.btn-danger {
+  background-color: #962843;
+}
+
+.form-group {
+  width: 40vw;
+}
+
+.query-results {
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.injection-failure {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #C25545;
+}
+
+.injection-success {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #00E2D0;
+}
+
 /* Dropdown Button */
 .dropbtn {
   background-color: #4caf50;
