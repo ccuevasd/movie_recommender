@@ -10,7 +10,58 @@
 <br />
 <br />
 
-<form action="/recommendation" method="get">
+      <form action="/recommendation" method="get">>
+        <section class="main-splash">
+
+          <h3 class="merp">Provide Ratings for some Movies</h3>
+
+          <form>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Enter a Movie</label>
+              <input type="text"  name="movie1" value="{{choices[0]}}" placeholder="Type in a movie you like." required />
+              <input type="text"  name="rating1" placeholder="0.0 - 5.0" required/>
+                <br />
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Enter a Movie</label>
+              <input type="text"  name="movie2" value="{{choices[1]}}" placeholder="Type in a movie you like." required />
+              <input type="text"  name="rating2" placeholder="0.0 - 5.0" required/>
+                <br />
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Enter a Movie</label>
+              <input type="text"  name="movie3" value="{{choices[2]}}" placeholder="Type in a movie you like." required />
+              <input type="text"  name="rating3" placeholder="0.0 - 5.0" required/> -->
+                <br />
+            </div>
+
+            <div class="dropdown">
+              <label for="formGroupExampleInput">Which algorithm do you prefer?</label>
+              <button class="dropbtn">Dropdown<Choose</button>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>-->
+
+                        <!-- <input type="submit" />
+              <br />
+              <br />
+            </div> -->
+          </form>
+          <div class="button-container">
+              <button type="submit" class="btn btn-danger btn-lg m-3">Submit</button>
+          </div>
+
+
+        <!-- <input type="submit" />
+        <br />
+        <br />
+      </div> -->
+    </form>
+
+
+<!-- <form action="/recommendation" method="get">
   <p>Provide Ratings for some Movies</p>
 
   <input type="text" name="movie1" value="{{choices[0]}}" />
@@ -20,18 +71,18 @@
   <input type="text" name="rating2" placeholder="0.0 - 5.0" />
   <br />
   <input type="text" name="movie3" value="{{choices[2]}}" />
-  <input type="text" name="rating3" placeholder="0.0 - 5.0" />
+  <input type="text" name="rating3" placeholder="0.0 - 5.0" /> -->
 
-  <br />
-  <br />
-  <div class="dropdown">
+  <!-- <br />
+  <br /> -->
+  <!-- <div class="dropdown">
     <button class="dropbtn">Dropdown</button>
     <div class="dropdown-content">
       <a href="#">Link 1</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
-    </div>
-  </div>
+    </div> -->
+
 
   <!-- <p>Please Select your Preferred Genre.</p> -->
 
@@ -42,8 +93,8 @@
       <option value="Sci-Fi">Sci-Fi</option>
       </select> -->
 
-  <input type="submit" />
-</form>
+
+<!-- </form> -->
 
 <!-- HERE WE SHOULD CREATE A DROPDOWN MENU TO CHOOSE NMF/ COSINE -->
 <a href="https://github.com/ccuevasd/movie_recommender">
