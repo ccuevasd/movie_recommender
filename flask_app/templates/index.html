@@ -1,50 +1,52 @@
-{% extends "_base.html" %}
+{% extends "_base.html" %} {% block content %}
 
-{% block content %}
+<!-- What we want users to see goes in the body  [CTRL+Shift+7]-->
+<h1>Movie Recommendations!</h1>
+<!--#Optional arguments: <a href="" style= class= id= </a>  -->
+<a href="/recommendation"> Don't know what to watch? Click here!</a>
+<br />
+<br />
+<br />
+<br />
+<br />
 
-    <!-- What we want users to see goes in the body  [CTRL+Shift+7]-->
-    <h1>Movie Recommendations!</h1>
-    <!--#Optional arguments: <a href="" style= class= id= </a>  -->
-    <a href="/recommendation"> Don't know what to watch? Click here!</a>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+<form action="/recommendation" method="get">
+  <p>Provide Ratings for some Movies</p>
 
-    <form action="/recommendation" method="get">
+  <input type="text" name="movie1" value="{{choices[0]}}" />
+  <input type="text" name="rating1" placeholder="0.0 - 5.0" />
+  <br />
+  <input type="text" name="movie2" value="{{choices[1]}}" />
+  <input type="text" name="rating2" placeholder="0.0 - 5.0" />
+  <br />
+  <input type="text" name="movie3" value="{{choices[2]}}" />
+  <input type="text" name="rating3" placeholder="0.0 - 5.0" />
 
-      <p>Provide Ratings for some Movies</p>
+  <br />
+  <br />
 
-      <input type="text" name="movie1" value="{{choices[0]}}">
-      <input type="text" name="rating1" placeholder="0.0 - 5.0">
-      <br>
-      <input type="text" name="movie2" value="{{choices[1]}}">
-      <input type="text" name="rating2" placeholder="0.0 - 5.0">
-      <br>
-      <input type="text" name="movie3" value="{{choices[2]}}">
-      <input type="text" name="rating3" placeholder="0.0 - 5.0">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+    </div>
+  </div>
+  <!-- <p>Please Select your Preferred Genre.</p> -->
 
-      <br>
-      <br>
-
-      <!-- <p>Please Select your Preferred Genre.</p> -->
-
-      <!-- <select name="genre">
+  <!-- <select name="genre">
       <option value="Drama">Drama</option>
       <option value="Action">Action</option>
       <option value="Horror">Horror</option>
       <option value="Sci-Fi">Sci-Fi</option>
       </select> -->
 
-      <input type="submit">
+  <input type="submit" />
+</form>
 
-    </form>
-
-
-    <!-- HERE WE SHOULD CREATE A DROPDOWN MENU TO CHOOSE NMF/ COSINE -->
-    <a href="https://github.com/ccuevasd/movie_recommender">
-      Take a loot at our repository
-    </a>
+<!-- HERE WE SHOULD CREATE A DROPDOWN MENU TO CHOOSE NMF/ COSINE -->
+<a href="https://github.com/ccuevasd/movie_recommender">
+  Take a loot at our repository
+</a>
 
 {% endblock %}
