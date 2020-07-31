@@ -18,6 +18,8 @@ R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
 imputer = KNNImputer(n_neighbors=5)
 R = pd.DataFrame(imputer.fit_transform(R), columns=R.columns, index=R.index)
 
+model = pickle.load(open('nmf_binary', 'rb'))
+
 # cosine_matrix
 similarities = pd.DataFrame(cosine_similarity(
     R), columns=R.index, index=R.index)

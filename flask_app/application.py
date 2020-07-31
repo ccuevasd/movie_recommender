@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from recommender import random_recommend, MOVIES
-from models import get_recommendations_cosine, get_recommendations_cosine_nmf, convert_flask_dict
+from models import get_recommendations_cosine, get_recommendations_nmf, convert_flask_dict
 # from Cosine import get_recommendations_cosine #convert_flask_dict
 
 app = Flask(__name__)
@@ -20,7 +20,7 @@ def recommend():
 
     method_ = user_input['method']
     if method_ == "NMF":
-        movies = get_recommendations(user_input)
+        movies = get_recommendations_nmf(user_input)
     if method_ == "Cosine":
         movies = get_recommendations_cosine(user_input)
     return render_template('recommendation.html', movies=movies)
