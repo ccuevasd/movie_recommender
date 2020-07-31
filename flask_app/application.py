@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from recommender import random_recommend, MOVIES
-from nmf_titles_fuzzy_model import get_recommendations, convert_flask_dict
-from Cosine import get_recommendations_cosine #convert_flask_dict
+from models import get_recommendations_cosine, get_recommendations_cosine_nmf, convert_flask_dict
+# from Cosine import get_recommendations_cosine #convert_flask_dict
 
 app = Flask(__name__)
 # __name__ is simply a reference to the current python script/module
