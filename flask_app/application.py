@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from recommender import random_recommend, MOVIES
-#from nmf_titles_fuzzy_model import get_recommendations, convert_flask_dict
-from Cosine import get_recommendations_cosine, convert_flask_dict
+from nmf_titles_fuzzy_model import get_recommendations, convert_flask_dict
+from Cosine import get_recommendations_cosine #convert_flask_dict
 
 app = Flask(__name__)
 # __name__ is simply a reference to the current python script/module
@@ -13,16 +13,27 @@ def index():
     return render_template('index.html', choices=MOVIES)
     # return      "<h1>Welcome to my website!</h1>"
 
-
-@app.route('/recommendation')
+@app.route("/recommendation")
 def recommend():
     user_input = dict(request.args)
-    # CONVERT FLASK DICTIONARY HERE!
     user_input = convert_flask_dict(user_input)
-    movies = get_recommendations_cosine(user_input)
 
-    #random_recommend(MOVIES, 3)
+    method_ = user_input['method']
+    if method_ == "NMF":
+        movies = get_recommendations(user_input)
+    if method_ == "Cosine":
+        movies = get_recommendations_cosine(user_input)
     return render_template('recommendation.html', movies=movies)
+
+# @app.route('/recommendation')
+# def recommend():
+#     user_input = dict(request.args)
+#     # CONVERT FLASK DICTIONARY HERE!
+#     user_input = convert_flask_dict(user_input)
+#     movies = get_recommendations_cosine(user_input)
+#
+#     #random_recommend(MOVIES, 3)
+#     return render_template('recommendation.html', movies=movies)
 
 
 if __name__ == '__main__':

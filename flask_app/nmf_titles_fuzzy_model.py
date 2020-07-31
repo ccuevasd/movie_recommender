@@ -15,16 +15,25 @@ R = pd.DataFrame(imputer.fit_transform(R), columns=R.columns, index=R.index)
 
 model = pickle.load(open('nmf_binary', 'rb'))
 
-
 def convert_flask_dict(flask_dict):
     new_keys = list(flask_dict.values())[::2]
     new_vals = list(flask_dict.values())[1::2]
+    return_dict = dict(zip(new_keys, new_vals))
+    return_dict['method']= flask_dict['method']
+    return return_dict
 
-    return dict(zip(new_keys, new_vals))
-
+# def convert_flask_dict(flask_dict):
+#     new_keys = list(flask_dict.values())[::2]
+#     new_vals = list(flask_dict.values())[1::2]
+#
+#     return dict(zip(new_keys, new_vals))
+#
+# def return_method(user_input):
+#     method_ = user_input['method']
+#     return method_
 
 def get_recommendations(user_input):
-    flask_user_input = user_input
+    flask_user_input = dict(list(user_input.items())[:-1])
     # flask_user_input = {
     # 'toy Story': '5',
     #  'Jumanyi': '3',

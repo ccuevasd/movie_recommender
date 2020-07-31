@@ -12,7 +12,7 @@
 
           <h3 class="merp">Provide Ratings for some Movies</h3>
 
-          <form>
+          <!-- <form> -->
             <div class="form-group">
               <label for="formGroupExampleInput">Enter a Movie</label>
               <input type="text"  name="movie1" value="{{choices[0]}}" placeholder="Type in a movie you like." required />
@@ -32,30 +32,41 @@
                 <br />
             </div>
 
-            <div class="dropdown">
+            <!-- <div class="dropdown">
               <label for="formGroupExampleInput">Which algorithm do you prefer?</label>
               <button class="dropbtn">Dropdown<Choose</button>
               <div class="dropdown-content">
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
+            </div> -->
+            <div class="button-container">
+              <label for="buttoncontainerExampleInput">Which algorithm do you prefer?</label>
+              <select id="method" name="method">
+              <option value="NMF">NMF</option>
+              <option value="Cosine">Cosine</option>
+              </select>
+              <button type="submit" class="btn btn-danger btn-lg m-3">Submit</button>
+              <!-- <input type="submit" /> -->
+
             </div>
 
+            <!--
+                <button type="submit" class="btn btn-danger btn-lg m-3">Submit</button>
+            </div> -->
                         <!-- <input type="submit" />
               <br />
               <br />
             </div> -->
           </form>
-          <div class="button-container">
-              <button type="submit" class="btn btn-danger btn-lg m-3">Submit</button>
-          </div>
+
 
 
         <!-- <input type="submit" />
         <br />
         <br />
       </div> -->
-    </form>
+    <!-- </form> -->
 
 
 <!-- <form action="/recommendation" method="get">
