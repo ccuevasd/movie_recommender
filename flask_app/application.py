@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from recommender import random_recommend, MOVIES
 from models import get_recommendations_cosine, get_recommendations_nmf, convert_flask_dict
+from filtering import recommend_by_genre
 # from Cosine import get_recommendations_cosine #convert_flask_dict
 
 app = Flask(__name__)
@@ -17,13 +18,20 @@ def index():
 @app.route("/recommendation")
 def recommend():
     user_input = dict(request.args)
-    user_input = convert_flask_dict(user_input)
+    sub_input = user_input['genre']
+    if sub_input == 'None':
+        del user_input['genre']
+        user_input = convert_flask_dict(user_input)
 
-    method_ = user_input['method']
-    if method_ == "NMF":
-        movies = get_recommendations_nmf(user_input)
-    if method_ == "Cosine":
-        movies = get_recommendations_cosine(user_input)
+        method_ = user_input['method']
+        if method_ == "NMF":
+            movies = get_recommendations_nmf(user_input)
+        if method_ == "Cosine":
+            movies = get_recommendations_cosine(user_input)
+
+    if sub_input != 'None':
+        genre_ = sub_input
+        movies = recommend_by_genre(genre_)
     return render_template('recommendation.html', movies=movies)
 
 
