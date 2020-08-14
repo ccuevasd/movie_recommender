@@ -1,0 +1,118 @@
+#logo {
+  height: 50px;
+}
+
+.main-splash {
+  background-color: #62003C;
+  height: 100vh;
+  color: #FFE4F8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#highlight {
+  color: #00C9B6;
+}
+
+.quote {
+  background-color: #FFE4F8;
+  height: 100vh;
+  color: #62003C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.query-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.merp {
+  margin-bottom: 20px;
+}
+
+.btn-danger {
+  background-color: #962843;
+}
+
+.form-group {
+  width: 40vw;
+}
+
+.query-results {
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.injection-failure {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #C25545;
+}
+
+.injection-success {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #00E2D0;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}

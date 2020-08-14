@@ -25,8 +25,8 @@ similarities = pd.DataFrame(cosine_similarity(
 def convert_flask_dict(flask_dict):
     new_keys = list(flask_dict.values())[::2]
     new_vals = list(flask_dict.values())[1::2]
-
-    return dict(zip(new_keys, new_vals))
+    method_ = str(flask_dict.values())[]
+    return dict(zip(new_keys, new_vals)), method_
 
 
 # function working for user_input = {'Toy Story': 5, 'Sabrina': 1, 'My Man Godfrey': 2}
