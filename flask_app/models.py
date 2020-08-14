@@ -11,31 +11,23 @@ from sklearn.impute import KNNImputer
 from sklearn.decomposition import NMF
 from sklearn.impute import KNNImputer
 
-# Data
-R = pd.read_csv('../data/UserRatingTitles-withoutYear.csv', index_col=0)
+# load pre imputed R
+R = pickle.load(open('R_binary', 'rb'))
 
-# KNN
-imputer = KNNImputer(n_neighbors=5)
-R = pd.DataFrame(imputer.fit_transform(R), columns=R.columns, index=R.index)
-
-model = pickle.load(open('nmf_binary', 'rb'))
-
-# cosine_matrix
-similarities = pd.DataFrame(cosine_similarity(
-    R), columns=R.index, index=R.index)
 
 def convert_flask_dict(flask_dict):
     new_keys = list(flask_dict.values())[::2]
     new_vals = list(flask_dict.values())[1::2]
     return_dict = dict(zip(new_keys, new_vals))
-    return_dict['method']= flask_dict['method']
+    return_dict['method'] = flask_dict['method']
     return return_dict
 
 
 # function working for user_input = {'Toy Story': 5, 'Sabrina': 1, 'My Man Godfrey': 2}
 def get_recommendations_cosine(user_input):
     flask_user_input = dict(list(user_input.items())[:-1])
-
+    similarities = pd.DataFrame(cosine_similarity(
+        R), columns=R.index, index=R.index)
     # Introduce New User
     #new_user_df = pd.DataFrame(flask_user_input, index=['NewUser'])
     new_user_df = pd.DataFrame(
@@ -90,12 +82,7 @@ def get_recommendations_cosine(user_input):
 
 def get_recommendations_nmf(user_input):
     flask_user_input = dict(list(user_input.items())[:-1])
-    # flask_user_input = {
-    # 'toy Story': '5',
-    #  'Jumanyi': '3',
-    #  'Grupmyer Old Men': '4'
-    #  }
-
+    model = pickle.load(open('nmf_binary', 'rb'))
     new_user_vector = pd.DataFrame(
         [np.nan]*len(R.columns), index=R.columns).transpose()
 

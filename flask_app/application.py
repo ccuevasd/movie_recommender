@@ -13,6 +13,7 @@ def index():
     return render_template('index.html', choices=MOVIES)
     # return      "<h1>Welcome to my website!</h1>"
 
+
 @app.route("/recommendation")
 def recommend():
     user_input = dict(request.args)
@@ -24,16 +25,6 @@ def recommend():
     if method_ == "Cosine":
         movies = get_recommendations_cosine(user_input)
     return render_template('recommendation.html', movies=movies)
-
-# @app.route('/recommendation')
-# def recommend():
-#     user_input = dict(request.args)
-#     # CONVERT FLASK DICTIONARY HERE!
-#     user_input = convert_flask_dict(user_input)
-#     movies = get_recommendations_cosine(user_input)
-#
-#     #random_recommend(MOVIES, 3)
-#     return render_template('recommendation.html', movies=movies)
 
 
 if __name__ == '__main__':
