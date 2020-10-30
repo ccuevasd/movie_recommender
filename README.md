@@ -5,3 +5,5 @@ This movie recommender has been built using unsupervised learning. You can choos
 The application uses flask, we have improved the performance by storing images of previosly generated python objects and we have used KNN Imputer to fill in the missing values. 
 
 To run the code open the application.py from the flask_app folder and then visit the website running on the shown host.
+
+![Screenshot 2020-10-30 at 16 16 33](https://user-images.githubusercontent.com/64790033/97723315-f1106980-1acb-11eb-9811-123fe40dcd56.png)
